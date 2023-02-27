@@ -1,37 +1,49 @@
+import random
+
+
 class hotel:
 
-    def __init__(self, title, king=5, queen=5, amount=None, worker=0, bnk=1_000_000, operation=None):
+    def __init__(self, title, king=10, queen=10, amount=None, worker=0, operation=None):
         self.title = title
         self.king = king
         self.queen = queen
         self.amount = (self.king + self.queen)
         self.workers = worker
-        self.bank = bnk
         self.operation = operation
 
     def booking(self):
-        """
-        take away from quue or king
-        every couple of mins
+        genders = ["sir","ma'ma"]
+        room = ["King", "Queen"]
+        rm = random.choice(room)
+        print("Welcome {} which room would you like. one {} size room".format(random.choice(genders), rm))
 
-        run pay
-        """
-    def pay(self):
-        """
-        from the the booking they will have to pay
-        """
+        if rm == "King":
+            res = self.king - 1
+            return hotel.pay(self, res, booked="King")
+        else:
+            res = self.queen - 1
+            return hotel.pay(self, res, booked="Queen")
 
-    def account(self):
-        return self.bank
-        """
-        sunbtract money to sim asalry of such
-        """
-    def get_report(self) -> tuple: 
+    def pay(self, rm, booked=None):
+
+        if booked == "King":
+            price = (170 * (self.king - rm))
+            profit = price
+        if booked == "Queen":
+            amount_of_room = (self.queen - rm)
+            price = (150 * amount_of_room)
+            profit = price
+
+        return (profit)
+
+    def avaiable(self):
+        return self.amount
+
+    def get_report(self) -> tuple:
         return (
                 self.title,
                 self.king,
                 self.queen,
                 self.amount,
-                self.workers,
-                self.bank
+                self.workers
             )

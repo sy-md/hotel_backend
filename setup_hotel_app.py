@@ -1,6 +1,5 @@
 import sqlite3
 from sqlite3 import Error
- 
 
 
 def create_connection(db_file):
@@ -32,9 +31,9 @@ def make_db():  # create data and tables
                             king INTEGER,
                             queen INTEGER,
                             amount INTEGER,
-                            worker INTEGER,
-                            bnk NUMERIC
-                        );"""
+                            worker INTEGER
+
+                    );"""
     print("hotel table made")
     create_employees = """ CREATE TABLE IF NOT EXISTS Workers (
                            id INT PRIMARY KEY,
