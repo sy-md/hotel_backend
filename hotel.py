@@ -19,9 +19,11 @@ class hotel:
 
         if rm == "King":
             res = self.king - 1
+            print("{} king size room left".format(self.king))
             return hotel.pay(self, res, booked="King")
         else:
             res = self.queen - 1
+            print("{} queen size room left".format(self.queen))
             return hotel.pay(self, res, booked="Queen")
 
     def pay(self, rm, booked=None):
@@ -38,6 +40,10 @@ class hotel:
 
     def avaiable(self):
         return self.amount
+
+    def paycheck(self):
+        monthly = 8500
+        return monthly
 
     def get_report(self) -> tuple:
         return (

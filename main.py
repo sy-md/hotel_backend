@@ -65,7 +65,7 @@ def main():  # create data and tables
 
         hotel_title = "jumper"  # user title hotel
 
-        my_hotel = hotel(title=hotel_title, operation=tables[0])
+        my_hotel = hotel(king=10, queen=10, amount=(20) ,title=hotel_title, operation=tables[0])
         b = bank(operation=tables[2])
         hotel_data = my_hotel.get_report()
         avaiable = hotel.avaiable(my_hotel)
@@ -73,18 +73,24 @@ def main():  # create data and tables
         data = tuple((hotel_data, bank_data))
         insert_table(conn, data, tables)
         # exit()
-        while avaiable != 0:
-            tmp = 0
-            for _ in range(5):
-                time.sleep(2)
+        while True: # life
+            for _ in range(5): # 20 days for :eon month 
+                monthly_profit = 0
+                time.sleep(0.8) 
                 re = hotel.booking(my_hotel)
-                tmp += re
-            time.sleep(5)
-            print("profit of the day - ", tmp)
+                monthly_profit += re
+                ava = hotel.avaiable(my_hotel)
+                print(ava)
+                if ava <= 0:
+                    break
+                time.sleep(0.5)
+                print("profit of the month - ", re)
 
-            bank_data = (bank_data + tmp)
-            update_table(conn, bank_data, updates)
-
+                bank_data = (bank_data + monthly_profit)
+                update_table(conn, bank_data, updates)
+                mnthly = hotel.paycheck(my_hotel)
+                print("monthly pay $", mnthly)
+                bank.withdraw_money(b, mnthly)
             
     else:
         print("Error! cannot create the database connection.")
