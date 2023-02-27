@@ -1,11 +1,10 @@
-from insert import hotel
+import hotel 
 
+class bank():
 
-class bank:
-
-    def __init__(self, balance, hotel_id, operation = None):
-        self.money = balance
-        self.id = hotel_id
+    def __init__(self, balance, hotel_id=None, operation=None):
+        self.balance = balance
+        self.hotel_id = hotel_id
 
     def earn_money(self, amount):
         self.balance += amount
@@ -14,7 +13,13 @@ class bank:
         self.balance -= amount
 
     def show_balance(self):
-        print(self.balance())
+        return self.balance
 
     def data_connection(self):
         pass
+
+    def get_statement(self) -> tuple:
+
+        return(self.balance)
+
+

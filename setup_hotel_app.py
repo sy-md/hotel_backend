@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+ 
 
 
 def create_connection(db_file):
@@ -22,7 +23,7 @@ def create_table(conn, create_table_sql):
         print(e)
 
 
-def main():  # create data and tables
+def make_db():  # create data and tables
     database = "hotel.db"
 
     create_hotels = """ CREATE TABLE IF NOT EXISTS Hotels (
@@ -35,15 +36,15 @@ def main():  # create data and tables
                             bnk NUMERIC
                         );"""
     print("hotel table made")
-#   create_employees = """ CREATE TABLE IF NOT EXISTS Workers (
-#                           id INT PRIMARY KEY,
-#                           name TEXT,
-#                           pos TEXT,
-#                           salary INT,
-#                           worker INT,
-#                           FOREIGN KEY(worker) REFERENCES Hotels(worker)
-#                       );"""
-
+    create_employees = """ CREATE TABLE IF NOT EXISTS Workers (
+                           id INT PRIMARY KEY,
+                           name TEXT,
+                           pos TEXT,
+                           salary INT,
+                           worker INT,
+                           FOREIGN KEY(worker) REFERENCES Hotels(worker)
+                       );"""
+    print("emp table made")
     create_bank = """ CREATE TABLE IF NOT EXISTS Bank (
                             id INTEGER PRIMARY KEY,
                             balance NUMERIC,
@@ -57,11 +58,10 @@ def main():  # create data and tables
 
     # create tables
     if conn is not None:
-        my_tables = [create_bank, create_hotels]
+        my_tables = [create_bank, create_hotels, create_employees]
         for table in my_tables:
             create_table(conn, table)
     else:
         print("Error! cannot create the database connection.")
 
-if __name__ == '__main__':
-    main()
+    return conn
