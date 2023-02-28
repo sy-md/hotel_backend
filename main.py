@@ -90,12 +90,17 @@ def main():  # create data and tables
                     print("here u go")
                 else:
                     print("no queen sorry")
-                    return
+                    return test(x)
+            
+            def test(x):
+                print(x)
+                return x
 
             while True:
                 for x in range(1):
-                    func()
+                    profit = func()
                     print("back in while loop")
+                    print(profit)
                 break
 
             > no queen sorry
