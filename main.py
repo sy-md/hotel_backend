@@ -58,22 +58,54 @@ def main():  # create data and tables
     update_bank = """ UPDATE Bank SET balance = ? WHERE id = ? """
     # create tables
     if conn is not None:
-
         tables = [create_hotel, create_emp, create_bank]
-
         updates = [update_bank]
 
-        hotel_title = "jumper"  # user title hotel
-
-        my_hotel = hotel(king=10, queen=10, amount=(20) ,title=hotel_title, operation=tables[0])
+        my_hotel = hotel(title="jumper", king=10, queen=10, amount=(20), title=hotel_title, operation=tables[0])
         b = bank(operation=tables[2])
-        hotel_data = my_hotel.get_report()
-        avaiable = hotel.avaiable(my_hotel)
-        bank_data = b.get_statement()
-        data = tuple((hotel_data, bank_data))
-        insert_table(conn, data, tables)
-        # exit()
+        """
+        setting the database for the first hotel and bank
+            * this can be a function 
+         
+        hotel_data = my_hotel.get_report() #getting the first report
+        avaiable = hotel.avaiable(my_hotel) #checking for rooms
+        bank_data = b.get_statement() # getting the statment from the bank
+        
+        data = tuple((hotel_data, bank_data)) # i think i should add avaiable
+        """
+        
+        """def setupdatabe(conn, data, tables )""" #send data to get processed
+        insert_table(conn, data, tables) # get rid of this line of code and relpace with setupdatabase()
+        
+        # exit()  #uncomment to just test database connection 
         while True: # life
+            """
+            1.) have guess check in the hotel
+            2.) do we have any room avaiable
+                
+            
+            def func():
+                x = "king"
+                if x == "queen":
+                    print("here u go")
+                else:
+                    print("no queen sorry")
+                    return
+
+            while True:
+                for x in range(1):
+                    func()
+                    print("back in while loop")
+                break
+
+            > no queen sorry
+            > back in while loop
+            
+            
+    
+                
+    
+            """
             for _ in range(5): # 20 days for :eon month 
                 monthly_profit = 0
                 time.sleep(0.8) 
