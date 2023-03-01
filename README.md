@@ -1,7 +1,5 @@
 # hotel_backend
 
-
-
 ## About
 simple le understanding of mysqMySQL using a GUI inteinter
 
