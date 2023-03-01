@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "hotel-backend"
+version = "0.1.0"
+description = "Simple understanding of MYSQL using a GUI DB broswer"
+authors = ["sy-md <mdorsetti733@gmail.com>"]
+readme = "README.md"
+packages = [{include = "hotel_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
